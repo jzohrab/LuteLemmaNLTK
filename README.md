@@ -26,6 +26,7 @@ $ python3.11
 >>> import nltk
 >>> nltk.download('punkt')
 >>> nltk.download('wordnet')
+>>> nltk.download('popular')
 ```
 
 # Usage
