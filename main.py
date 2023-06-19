@@ -18,8 +18,12 @@ tag_map['R'] = wn.ADV
 def generate_import(text):
     tokenization = nltk.word_tokenize(text)
     lmtzr = WordNetLemmatizer()
-    for token, tag in nltk.pos_tag(tokenization):
-        lemma = lmtzr.lemmatize(token, tag_map[tag[0]])
+    lemma_tokens = [
+        [ lmtzr.lemmatize(token, tag_map[tag[0]]), token ]
+        for token, tag
+        in nltk.pos_tag(tokenization)
+    ]
+    for lemma, token in lemma_tokens:
         print(lemma, "=>", token)
 
 
