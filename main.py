@@ -38,9 +38,7 @@ def generate_import(text):
         lemma_tokens,
         key = lambda x: len_then_string(x)
     )
-    
     return sortedbylenthenstring
-
 
 ARGS=sys.argv
 if (len(ARGS) != 3):
@@ -59,10 +57,14 @@ with open(infile, 'r') as reader:
     text = reader.read()
 
 pairs = generate_import(text)
+# print(pairs)
+
+outstrings = [ f"{p}\t{c}\n" for p,c in pairs ]
+outstrings = list(set(outstrings))
 
 with open(outfile, 'w') as writer:
-    for lemma, child in pairs:
-        writer.write(f"{lemma}\t{child}\n")
+    for s in outstrings:
+        writer.write(s)
     writer.flush()
 
 
